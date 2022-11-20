@@ -39,7 +39,7 @@ namespace API.Controllers
 
             };
             this.context.Users.Add(user);
-            await this.context.SaveChangesAsync();
+            await this.context.SaveChangesAsync(); 
             return new UserDto
             {
                 Username = user.UserName,
