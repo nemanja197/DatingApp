@@ -10,7 +10,6 @@ using System.Text.Json;
 using System.Threading.Tasks;
 
 
-
 namespace API.Middleware
 {
     public class ExceptionMiddleware
@@ -37,6 +36,7 @@ namespace API.Middleware
                 logger.LogError(ex, ex.Message);
                 context.Response.ContentType = "application/json";
                 context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+                
 
                 var response = env.IsDevelopment()
                     ? new ApiException(context.Response.StatusCode, ex.Message, ex.StackTrace?.ToString())

@@ -12,8 +12,8 @@ error:any;
     const navigation =this.router.getCurrentNavigation();
     this.error=navigation?.extras?.state?.['error'];
   }
-
+//ovaj error je drugaciji 
   ngOnInit(): void {
   }
 
-}
+} 

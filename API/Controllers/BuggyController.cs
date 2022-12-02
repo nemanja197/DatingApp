@@ -1,4 +1,6 @@
-﻿using API.Data;
+﻿
+
+using API.Data;
 using API.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -34,20 +36,21 @@ namespace API.Controllers
             return Ok(thing);
         }
 
-        [HttpGet("server-error")]   
+        [HttpGet("server-error")]
         public ActionResult<string> GetServerError()
         {
             var thing = context.Users.Find(-1);
 
             var thingToReturn = thing.ToString();
-
+            
             return thingToReturn;
         }
 
         [HttpGet("bad-request")]
         public ActionResult<string> GetBadRequest()
         {
-            return BadRequest("This was not a good request");
+           
+           return BadRequest("This was not a good request");
         }
     }
 }
