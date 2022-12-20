@@ -10,7 +10,7 @@ import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-photo-editor',
-  templateUrl: './photo-editor.component.html',
+  templateUrl:'./photo-editor.component.html',
   styleUrls: ['./photo-editor.component.css']
 })
 export class PhotoEditorComponent implements OnInit {
@@ -67,8 +67,13 @@ export class PhotoEditorComponent implements OnInit {
 
     this.uploader.onSuccessItem = (item, response, status, headers) => {
       if (response) {
-        const photo = JSON.parse(response);
+        const photo:Photo = JSON.parse(response);
         this.member.photos.push(photo);
+        if(photo.isMain){
+          this.user.photoUrl=photo.url;
+          this.member.photoUrl=photo.url;
+          this.accountService.setCurrentUser(this.user);
+        }
       }
     }
   }
